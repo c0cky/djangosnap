@@ -31,7 +31,7 @@ def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = ModelWithFileField(file_field=request.FILES['file']
+            instance = Media(file_field=request.FILES['file']
             instance.save()
             return HttpResponse("Saved")
     else:
