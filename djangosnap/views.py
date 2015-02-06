@@ -27,6 +27,10 @@ def handle_uploaded_file(f):
         for chunk in f.chunks():
             destination.write(chunk)
 
+def video_test(request):
+    return render(request, 'djangosnap/videotest.html')
+
+'''
 def upload_file(request): 
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
@@ -37,3 +41,4 @@ def upload_file(request):
     else:
         form = UploadFileForm()
     return HttpResponse()
+'''
