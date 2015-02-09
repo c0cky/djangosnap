@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-from forms import UploadFileForm
+from forms import MediaForm
 from wsgiref.util import FileWrapper
 
 def index(request):
@@ -28,17 +28,15 @@ def handle_uploaded_file(f):
             destination.write(chunk)
 
 def video_test(request):
-    return render(request, 'djangosnap/videotest.html')
+    form = MediaForm()
+    return render(request, 'djangosnap/videotest.html', {'form':form})
 
-'''
 def upload_file(request): 
     if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
+        form = MediaForm(request.POST, request.FILES)
         if form.is_valid():
-            instance = Media(file_field=request.FILES['file']
-            instance.save()
+            form.save()
             return HttpResponse("Saved")
     else:
-        form = UploadFileForm()
+        form = MediaForm()
     return HttpResponse()
-'''
