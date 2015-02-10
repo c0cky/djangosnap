@@ -10,6 +10,7 @@
     <source src="{% static 'djangosnap/sample.mp4' %}" type="video/mp4">
 Your broswer doesn't support video tags
 </video>
+<!-- Upload form for the video -->
 <form action = "{%  url 'upload'  %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>{{ form.non_field_errors }}</p>

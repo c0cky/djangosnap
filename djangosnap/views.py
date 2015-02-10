@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from forms import MediaForm
 from wsgiref.util import FileWrapper
+from models import Media
 
 def index(request):
     return HttpResponse("WORK IN PROGRESS BY CAMRON GODBOUT AND JARED PIEDT")
@@ -31,7 +32,7 @@ def video_test(request):
     form = MediaForm()
     return render(request, 'djangosnap/videotest.html', {'form':form})
 
-def upload_file(request): 
+def upload_file(request):
     if request.method == 'POST':
         form = MediaForm(request.POST, request.FILES)
         if form.is_valid():
@@ -40,3 +41,7 @@ def upload_file(request):
     else:
         form = MediaForm()
     return HttpResponse()
+
+def watch_videos(request):
+    mediafiles = Media.objects.all()
+    return render(request, 'djangosnap/play_video.html', {'mediafiles': mediafiles})
