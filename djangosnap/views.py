@@ -7,7 +7,7 @@ from wsgiref.util import FileWrapper
 from models import Media
 
 def index(request):
-    return HttpResponse("WORK IN PROGRESS BY CAMRON GODBOUT AND JARED PIEDT")
+    return render(request, 'djangosnap/cover.html')
 
 @csrf_exempt
 def test(request):
