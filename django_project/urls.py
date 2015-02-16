@@ -17,6 +17,7 @@ urlpatterns = patterns('',
 
     url(r'^$', views.index, name='index'),
     url(r'^test/', views.video_test, name='test'),
+    url(r'^uploadit/', views.upload_it, name='uploadit'),
     url(r'^upload/', views.upload_file, name='upload'),
     url(r'^watch/', views.watch_videos, name='watch'),
 

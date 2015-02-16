@@ -32,6 +32,10 @@ def video_test(request):
     form = MediaForm()
     return render(request, 'djangosnap/videotest.html', {'form':form})
 
+def upload_it(request):
+    form = MediaForm()
+    return render(request, 'djangosnap/upload.html', {'form': form})
+
 def upload_file(request):
     if request.method == 'POST':
         form = MediaForm(request.POST, request.FILES)
