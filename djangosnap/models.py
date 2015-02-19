@@ -2,6 +2,11 @@ from django.db import models
 import os
 from django.core.exceptions import ValidationError
 # Create your models here.
+from django.contrib.auth.models import User
+from tastypie.models import create_api_key
+
+models.signals.post_save.connect(create_api_key, sender=User)
+
 def get_media_path(instance, filename):
     return os.path.join('media', str(instance.id), filename)
 

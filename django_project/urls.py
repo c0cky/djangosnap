@@ -4,9 +4,12 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
 from djangosnap.api import MediaResource
+from tastypie.api import Api
 admin.autodiscover()
 
-media_resource = MediaResource()
+
+tagalong_api = Api(api_name='tagalong')
+tagalong_api.register(MediaResource())
 
 urlpatterns = patterns('',
     # Examples:
@@ -20,7 +23,8 @@ urlpatterns = patterns('',
     url(r'^uploadit/', views.upload_it, name='uploadit'),
     url(r'^upload/', views.upload_file, name='upload'),
     url(r'^watch/', views.watch_videos, name='watch'),
+    url(r'^cusr/', views.add_user, name='adduser'),
 
-    url(r'^api/', include(media_resource.urls)),
+    url(r'^api/', include(tagalong_api.urls)),
 
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from forms import UserForm
+from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
 from forms import MediaForm
@@ -8,6 +10,17 @@ from models import Media
 
 def index(request):
     return render(request, 'djangosnap/cover.html')
+
+def add_user(request):
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(new_user)
+    else:
+        form = UserForm()
+    return HttpResponse("success")
+
 
 @csrf_exempt
 def test(request):
@@ -20,7 +33,7 @@ def test(request):
 def video_response(request):
     file = FileWrapper(open('path/to/video.mp4', 'rb'))
     response = HttpResponse(file, content_type='video/mp4')
-    response['Content-Disposition'] = 'attachment; filename=filenam3.mp4'
+    response['Content-Disposition'] = 'attachment; filename=filename.mp4'
     return response
  
 def handle_uploaded_file(f):

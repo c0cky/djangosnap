@@ -3,7 +3,7 @@ from models import Media
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
-
+from django.contrib.auth.models import User
 
 class MediaForm(forms.ModelForm):
 
@@ -20,3 +20,8 @@ class MediaForm(forms.ModelForm):
 
     class Meta:
         model = Media
+
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password')
