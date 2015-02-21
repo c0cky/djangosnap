@@ -15,7 +15,7 @@ def add_user(request):
     if request.method == "POST":
         form = UserForm(request.POST)
         if form.is_valid():
-            new_user = User.objects.create_user(**form.cleaned_data)
+            new_user = User.objects.create_user(form)
             login(new_user)
     else:
         form = UserForm()
@@ -60,5 +60,7 @@ def upload_file(request):
     return HttpResponse()
 
 def watch_videos(request):
-    mediafiles = Media.objects.all()
+    #mediafiles = list(Media.objects.filter(approved=True).values('mediafile'))
+    mediafiles = Media.objects.filter(approved=True)
+    print type(mediafiles)
     return render(request, 'djangosnap/play_video.html', {'mediafiles': mediafiles})

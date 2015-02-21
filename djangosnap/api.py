@@ -3,7 +3,7 @@ from tastypie.resources import ModelResource
 from tastypie.constants import ALL
 from tastypie.authentication import BasicAuthentication, ApiKeyAuthentication, MultiAuthentication
 from tastypie.authorization import DjangoAuthorization
-from models import s
+from models import Media
 
 class MediaResource(ModelResource):
     class Meta:
