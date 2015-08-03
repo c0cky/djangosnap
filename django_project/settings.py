@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'djangosnap',
+    'tastypie',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,13 +57,25 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+#    }
+#}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': '8UJJVaSl7V',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
+#'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
@@ -84,7 +97,7 @@ USE_TZ = True
 #STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/camron/djangosnap/djangosnap/media/'
+MEDIA_ROOT = '/home/djangosnap/djangosnap/media/'
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]

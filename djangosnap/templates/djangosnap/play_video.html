@@ -154,7 +154,11 @@
         var vid = isVid(mediaURLS[currentMediaIndex]);
         if (vid)
         {
-            loadVideo()
+            loadVideo();
+        }
+        else
+        {
+            loadImage();
         }
     }
 
