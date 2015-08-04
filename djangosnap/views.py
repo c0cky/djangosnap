@@ -63,4 +63,5 @@ def watch_videos(request):
     #mediafiles = list(Media.objects.filter(approved=True).values('mediafile'))
     mediafiles = Media.objects.filter(approved=True)
     print type(mediafiles)
+    print "DOES THIS EVEN WORK GOT DANG!!!!!"
     return render(request, 'djangosnap/play_video.html', {'mediafiles': mediafiles})
