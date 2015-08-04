@@ -2,38 +2,38 @@
 {% load staticfiles%}
 {% block content %}
 <style>
-#owl-demo .item{
-  margin: 3px;
-}
-#owl-demo .item img{
-  display: block;
-  width: 100%;
-  height: auto;
-}
-</style>
 
-          <div class="inner cover" id="innercover">
-          <a class="btn left-align" onclick="previousMedia()" style="visibility: hidden" id="previous"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+.img-responsive {
+    width:100%;
+}
+
+
+</style>
+          <div class="" id="innercover" sytle="width:100%">
+          <div class="row">
+<div class="col-md-1"><a class="btn text-left " onclick="previousMedia()" style="visibility: hidden" id="previous"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+        </div>
 
 
             {% if mediafiles %}
-    {% for vid in mediafiles %}
-
+<div class="col-md-10">
         <video width="0" height="0" controls id="vid" style="visibility: hidden">
             <source src="{{ vid.mediafile.url }}" type="video/mp4">
             Your broswer doesn't support video tags
         </video>
+        
+        <img src="#" class="img-responsive col-md-10"style="visibility: hidden" id="im"/>
+        </div>
 
-        <img src="#" style="visibility: hidden" id="im"/>
-
-    {% endfor %}
     {% else %}
     {% endif %}
-
-          <a class="btn right-align" onclick="nextMedia()" style="visibility: hidden" id="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+          <div class="col-md-1">
+          <a class="btn text-right col-md-1" onclick="nextMedia()" style="visibility: hidden" id="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+          </div>
+        </div>
           </div>
 
-
+            <script src="{% static 'djangosnap/watchScript.js' %}"></script>
 
 
 <script type="application/javascript">
@@ -45,7 +45,6 @@
         {% endfor%}
     {% endif %}
 </script>
-    <script src="{% static 'djangosnap/watchScript.js' %}"></script>
 
 
 {% endblock %}

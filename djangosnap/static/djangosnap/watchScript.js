@@ -16,7 +16,6 @@ $( document ).ready(function () {
 
 
     }
-
      function previousMedia()
      {
          var temp = currentMediaIndex - 1;
@@ -26,12 +25,15 @@ $( document ).ready(function () {
              {
                  $('#previous').css("visibility","hidden");
              }
+             if (currentMediaIndex != 0) {
+                $('#next').css("visibility","visible");
+             }
              currentMediaIndex--;
              loadMedia();
          }
 
      }
- 
+
      function nextMedia()
      {
          var temp = currentMediaIndex + 1;
@@ -43,7 +45,7 @@ $( document ).ready(function () {
              }
              if (currentMediaIndex == 0)
              {
-                 $('#previous').css("visibility","visible")
+                 $('#previous').css("visibility","visible");
              }
              currentMediaIndex++;
              loadMedia(currentMediaIndex);
@@ -107,6 +109,34 @@ $("#vid").on("swipeleft",function(){
 $("#vid").on("swiperight",function(){
   nextMedia();
 });
+
+
+$(document).keydown(function(e) {
+    switch(e.which) {
+        case 37: // left
+        if ($('#previous').is(":visible")) {
+            previousMedia();
+        }
+        break;
+
+        case 38: // up
+        break;
+
+        case 39: // right
+        if ($('#next').is(":visible")) {
+            nextMedia();
+        }
+        break;
+
+        case 40: // down
+        break;
+
+        default: return; // exit this handler for other keys
+    }
+    e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+
+
 
 function isVid(url)
 {
