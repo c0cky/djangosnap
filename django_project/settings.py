@@ -97,7 +97,7 @@ USE_TZ = True
 #STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/home/djangosnap/djangosnap/media/'
+MEDIA_ROOT = '/Users/godboutc/Desktop/Django/djangosnap/djangosnap'
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]

@@ -9,7 +9,6 @@ $( document ).ready(function() {
   } catch (e) {
       highlight = path;
   }
-  console.log(highlight);
   $('li').removeClass();
   $('#' + highlight).addClass('active');
 
