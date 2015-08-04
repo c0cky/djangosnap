@@ -1,5 +1,4 @@
 $( document ).ready(function () {
-    console.log(mediaURLS);
 });
 
 // console.log(mediaURLS);
@@ -70,12 +69,18 @@ $( document ).ready(function () {
      {
          closeOutImage();
          var width = $('#innercover').width();
-         var height = $('#inercover').height();
+         var height = 500;
          $('#vid').css("visibility","visible");
-         $('#vid').width(width);
-         $('#vid').height(height);
-         $('#vid').attr('src', mediaURLS[currentMediaIndex]);
-         $('#vid')[0].load();
+         // $('#vid').width(width);
+         // console.log(width);
+         // $('#vid').height(height);
+         // console.log(height);
+         $('#sauce').attr('src', mediaURLS[currentMediaIndex]);
+         videojs("vid", {}, function(){
+  // Player (this) is initialized and ready.
+});
+
+         $('#vid').load();
      }
 
     function loadImage()
@@ -141,7 +146,7 @@ $(document).keydown(function(e) {
 function isVid(url)
 {
   var extension = url.substr(url.length - 3);
-  if (extension === 'mp3')
+  if (extension === 'mp4')
   {
     return true;
   }

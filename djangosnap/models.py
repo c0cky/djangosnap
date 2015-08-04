@@ -23,6 +23,8 @@ class Media(models.Model):
 
     mediafile = models.FileField(upload_to='djangosnap/%Y/%m/%d', validators=[validate_media])
     approved = models.BooleanField(default=False)
+    up_vote = models.IntegerField(blank=True, default=0, null=True)
+    down_vote = models.IntegerField(blank=True, default=0, null=True)
     long_position   = models.DecimalField (max_digits=8, decimal_places=3, blank=True, default=0, null=True)
     lat_position   = models.DecimalField (max_digits=8, decimal_places=3, blank=True, default=0, null=True)
     upload_time = models.TimeField((u"Upload Date"), auto_now_add=True, blank=True)
