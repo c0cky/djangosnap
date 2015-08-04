@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+<!-- <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="http://d3js.org/topojson.v1.min.js"></script> -->
+<!-- <script src="{% static 'djangosnap/mapPick.js' %}"></script>
+ -->
+<script src="{% static 'djangosnap/raphael.js' %}"></script>
+<script src="{% static 'djangosnap/jquery.usmap.js' %}"></script>
+<div class="inner cover">
+
+<div id="map" style="width: 700px; height: 700px;"></div>
+</div>
+
+<script>
+
+$( document ).ready(function () { 
+
+$('#map').usmap({
+  // The click action
+  click: function(event, data) {
+    console.log("click" + data.name);  }
+});
+});
+
+</script>
+
+
+{% endblock %}

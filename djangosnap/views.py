@@ -64,3 +64,6 @@ def watch_videos(request):
     mediafiles = Media.objects.filter(approved=True)
     print type(mediafiles)
     return render(request, 'djangosnap/play_video.html', {'mediafiles': mediafiles})
+
+def map_pick(request):
+    return render(request, 'djangosnap/mapPick.html')
