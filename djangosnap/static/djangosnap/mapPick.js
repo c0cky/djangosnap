@@ -3,7 +3,7 @@
 var width = 1500,
     height = 1100,
     centered;
-    
+
 var projection = d3.geo.albersUsa()
     .scale(2000)
     .translate([760, height / 2]);
@@ -19,13 +19,12 @@ var svg = d3.select("body").append("svg")
 svg.append("rect")
     .attr("class", "background")
     .attr("width", width)
-    .attr("height", height)
-    .on("click", clicked);
-
+    .attr("height", height);
 var g = svg.append("g");
 
 // path data
-d3.json("us.json", function(unitedState) {
+d3.json({% static 'us.json' %}, function(unitedState) {
+    console.log(unitedState);
   var data = topojson.feature(unitedState, unitedState.objects.states).features;
   // our names
   d3.tsv("us-states-names.tsv", function(tsv){

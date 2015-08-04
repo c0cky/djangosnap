@@ -24,6 +24,7 @@ urlpatterns = patterns('',
     url(r'^upload/', views.upload_file, name='upload'),
     url(r'^watch/', views.watch_videos, name='watch'),
     url(r'^cusr/', views.add_user, name='adduser'),
+    url(r'^map/', views.map_pick, name='map'),
 
     url(r'^api/', include(tagalong_api.urls)),
 
