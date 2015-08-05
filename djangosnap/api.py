@@ -4,6 +4,7 @@ from tastypie.constants import ALL
 from tastypie.authentication import BasicAuthentication, ApiKeyAuthentication, MultiAuthentication
 from tastypie.authorization import DjangoAuthorization
 from models import Media
+from django.contrib.auth.models import User
 
 class MediaResource(ModelResource):
     class Meta:
