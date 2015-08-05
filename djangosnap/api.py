@@ -14,7 +14,7 @@ class MediaResource(ModelResource):
         authorization = DjangoAuthorization
 
 
-class CreateUserResource(ModelResource):
+class UserResource(ModelResource):
     class Meta:
         allowed_methods = ['post']
         object_class = User
