@@ -13,10 +13,13 @@ def index(request):
 
 def add_user(request):
     if request.method == "POST":
-        form = UserForm(request.POST)
+        user = request.POST['user']
+        password = request.POST['password']
+        email = request.POST['email']
         if form.is_valid():
-            new_user = User.objects.create_user(form)
+            new_user = User.objects.create_user(username=user, password=password, email=email)
             login(new_user)
+            return HttpResponse("need to add the get api key of this user")
     else:
         form = UserForm()
     return HttpResponse("success")
