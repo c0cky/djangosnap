@@ -91,8 +91,8 @@ body {
   border-bottom-color: #a9a9a9;
   border-bottom-color: rgba(255,255,255,.25);*/
   background-color: transparent;
-     color: #64FFDA;
-  border-bottom-color: #64FFDA;
+     color: #FFD54F;
+  border-bottom-color: #FFD54F;
 }
 
 .masthead-nav > .active > a,
@@ -100,8 +100,10 @@ body {
 .masthead-nav > .active > a:focus {
  /* color: #fff;
   border-bottom-color: #fff;*/
-   color: #64FFDA;
-  border-bottom-color: #64FFDA;
+   color: #FFD54F;
+/*  border-bottom-color: #64FFDA;
+*/
+   border-bottom-color: #FFD54F;
 }
 
 @media (min-width: 768px) {

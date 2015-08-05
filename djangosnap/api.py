@@ -14,4 +14,19 @@ class MediaResource(ModelResource):
         authorization = DjangoAuthorization
 
 
+class CreateUserResource(ModelResource):
+    class Meta:
+        allowed_methods = ['post']
+        object_class = User
+        include_resource_uri = False
+        fields = ['username']
+
+    def obj_create(self, bundle, request=None, **kwargs):
+        username, password = bundle.data['username'], bundle.data['password']
+        try:
+            bundle.obj = User.objects.create_user(username, '', password)
+        except IntegrityError:
+            raise BadRequest('That username already exists')
+        return bundle
+
 
