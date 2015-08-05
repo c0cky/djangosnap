@@ -70,24 +70,24 @@ $( document ).ready(function () {
          closeOutImage();
          var width = $('#innercover').width();
          var height = 500;
-         $('#vid').css("visibility","visible");
-         // $('#vid').width(width);
-         // console.log(width);
-         // $('#vid').height(height);
-         // console.log(height);
-         $('#sauce').attr('src', mediaURLS[currentMediaIndex]);
-         videojs("vid", {}, function(){
-  // Player (this) is initialized and ready.
-});
+        //  $('#vid').css("visibility","visible");
+        //  player.dimensions(700, 450);
+        // var player = videojs('vid');
+        // player.src(mediaURLS[currentMediaIndex]);
+        // player.load();
+        // $('#vid_html5_api').width(width);
+        // $('#vid_html5_api').height(height);
 
-         $('#vid').load();
+        // BV = new $.BigVideo();
+        // BV.init();
+        // BV.show(mediaURLS[currentMediaIndex],{ambient:true});
      }
 
     function loadImage()
     {
         closeOutVideo();
         var width = $('#innercover').width();
-        var height = $('#inercover').height();
+        var height = 450;
         $('#im').css("visibility","visible");
         $('#im').width(width);
         $('#im').height(height);
@@ -140,7 +140,6 @@ $(document).keydown(function(e) {
     }
     e.preventDefault(); // prevent the default action (scroll / move caret)
 });
-
 
 
 function isVid(url)

@@ -5,11 +5,6 @@
 
 .img-responsive {
     width:100%;
-
-#vid_html5_api.vjs-tech {
-  position: relative !important;
-    width: 100% !important;
-    height: auto !important;
 }
 </style>
           <div class="" id="innercover" sytle="width:100%">
@@ -19,13 +14,11 @@
 
 
             {% if mediafiles %}
-<div class="col-md-10">
-        <video class="video-js vjs-default-skin"
-  controls preload="auto" width="640" height="264"
-   id="vid" style="visibility: hidden">
-            <source id="sauce" src="" type="video/mp4">
-            Your broswer doesn't support video tags
-        </video>
+<div class="col-md-10" id="content">
+        <!-- <video class="video-js vjs-default-skin"
+  controls width="640" height="264"
+   id="vid" style="visibility: visible" data-setup='{}'>
+        </video> -->
         
         <img src="#" class="img-responsive col-md-10"style="visibility: hidden" id="im"/>
         </div>
@@ -51,6 +44,9 @@
 </script>
 
  <script src="{% static 'djangosnap/watchScript.js' %}"></script>
+ <script src="{% static 'djangosnap/bigvideo.js' %}"></script>
+ <link rel="stylesheet" type="text/css" href="{% static 'djangosnap/bigvideo.css' %}">
+
 
 
 
