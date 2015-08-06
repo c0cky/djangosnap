@@ -12,13 +12,13 @@ class MediaResource(ModelResource):
         resource_name = 'media'
         filtering = {"title": ALL}
         authentication = ApiKeyAuthentication()
-        authorization = DjangoAuthorization
+        authorization = DjangoAuthorization()
 
 
 class UserResource(ModelResource):
     class Meta:
         allowed_methods = ['post']
-        object_class = User
+        object_class = User()
         include_resource_uri = False
         fields = ['username']
 
