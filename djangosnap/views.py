@@ -14,6 +14,7 @@ from tastypie.models import ApiKey
 def index(request):
     return render(request, 'djangosnap/cover.html')
 
+@csrf_exempt
 def add_user(request):
     if request.method == "POST":
         user = request.POST['username']
