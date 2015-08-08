@@ -23,9 +23,11 @@ def add_user(request):
             new_user = User.objects.create_user(username=user, password=password, email=email)
             key = ApiKey.objects.get(user=new_user)
             return HttpResponse(key.key)
+        else:
+            return HttpResponse("")
     else:
         form = UserForm()
-    return HttpResponse("success")
+        return HttpResponse("")
 
 def login_user(request):
     username = request.POST['username']
