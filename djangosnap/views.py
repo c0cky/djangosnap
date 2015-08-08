@@ -20,18 +20,19 @@ def add_user(request):
         user = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
-        if form.is_valid():
-            new_user = User.objects.create_user(username=user, password=password, email=email)
-            key = ApiKey.objects.get(user=new_user)
-            return HttpResponse(key.key)
-        else:
+        if not len(user) > 5 and not len(password) > 6:
             return HttpResponse("")
+        new_user = User.objects.create_user(username=user, password=password, email=email)
+        key = ApiKey.objects.get(user=new_user)
+        return HttpResponse(key.key)
     else:
         form = UserForm()
         return HttpResponse("")
 
 @csrf_exempt
 def login_user(request):
+    if request.method != "POST":
+        return HttpResponse("")
     username = request.POST['username']
     password = request.POST['password']
     user = authenticate(username=username, password=password)
