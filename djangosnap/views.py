@@ -21,8 +21,8 @@ def add_user(request):
         email = request.POST['email']
         if form.is_valid():
             new_user = User.objects.create_user(username=user, password=password, email=email)
-            login(new_user)
-            return HttpResponse("need to add the get api key of this user")
+            key = ApiKey.objects.get(user=new_user)
+            return HttpResponse(key.key)
     else:
         form = UserForm()
     return HttpResponse("success")
