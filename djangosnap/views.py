@@ -16,7 +16,7 @@ def index(request):
 
 def add_user(request):
     if request.method == "POST":
-        user = request.POST['user']
+        user = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
         if form.is_valid():
@@ -29,6 +29,7 @@ def add_user(request):
         form = UserForm()
         return HttpResponse("")
 
+@csrf_exempt
 def login_user(request):
     username = request.POST['username']
     password = request.POST['password']
