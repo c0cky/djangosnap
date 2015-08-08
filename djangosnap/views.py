@@ -7,6 +7,9 @@ from django.views.decorators.csrf import csrf_exempt
 from forms import MediaForm
 from wsgiref.util import FileWrapper
 from models import Media
+from django.contrib.auth import authenticate, login
+from tastypie.models import ApiKey
+
 
 def index(request):
     return render(request, 'djangosnap/cover.html')
@@ -23,6 +26,24 @@ def add_user(request):
     else:
         form = UserForm()
     return HttpResponse("success")
+
+def login_user(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            # login(request, user)
+            # # Redirect to a success page.
+            u = User.objects.get(username=username)
+            key = ApiKey.objects.get(user=u)
+            return HttpResponse(key.key)
+        else:
+            # Return a 'disabled account' error message
+            return HttpResponse('disabled')
+    else:
+        return HttpResponse('failed login')
+
 
 
 @csrf_exempt
