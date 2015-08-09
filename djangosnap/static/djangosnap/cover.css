@@ -43,6 +43,9 @@ body {
   border-width: 0 0 0px;
 }
 
+.navbar-fixed-top { background-color: rgba(255,255,255,0);transition: background-color 2s ease 0s;}
+.navbar-fixed-top.opaque { background-color: rgba(255,255,255,.2);transition: background-color 2s ease 0s; }
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -110,9 +113,12 @@ body {
   border-bottom-color: #FFD54F;
 }
 
-.navbar-default .navbar-nav>.active>a {
+.navbar-default .navbar-nav>.active>a,
+.navbar-default .navbar-nav>.active>a:hover,
+.navbar-default .navbar-nav>.active>a:focus {
   color: #FFD54F;
   border-bottom-color: #FFD54F;
+  background-color: rgba(255,255,255,.2);
 } 
 
 .masthead-nav > .active > a,
@@ -124,6 +130,17 @@ body {
 /*  border-bottom-color: #64FFDA;
 */
    border-bottom-color: #FFD54F;
+
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a:hover,
+.navbar-default .navbar-nav>li>a:focus {
+  color: #FFD54F;
+  border-bottom-color: #FFD54F;
 }
 
 .navbar-nav > .active > a,

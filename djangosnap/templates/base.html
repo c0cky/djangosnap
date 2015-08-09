@@ -40,6 +40,16 @@
     <link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
     <script src="http://vjs.zencdn.net/4.12/video.js"></script>
 
+    <script>
+    $(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.navbar-fixed-top').addClass('opaque');
+    } else {
+        $('.navbar-fixed-top').removeClass('opaque');
+    }
+});
+    </script>
+
   </head>
 
   <body>
