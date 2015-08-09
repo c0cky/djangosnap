@@ -35,6 +35,14 @@ body {
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
+.navbar-default {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.navbar-fixed-top {
+  border-width: 0 0 0px;
+}
+
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
@@ -95,9 +103,32 @@ body {
   border-bottom-color: #FFD54F;
 }
 
+.navbar-default > li > a:hover,
+.navbar-default > li > a:focus {
+  background-color: transparent;
+     color: #FFD54F;
+  border-bottom-color: #FFD54F;
+}
+
+.navbar-default .navbar-nav>.active>a {
+  color: #FFD54F;
+  border-bottom-color: #FFD54F;
+} 
+
 .masthead-nav > .active > a,
 .masthead-nav > .active > a:hover,
 .masthead-nav > .active > a:focus {
+ /* color: #fff;
+  border-bottom-color: #fff;*/
+   color: #FFD54F;
+/*  border-bottom-color: #64FFDA;
+*/
+   border-bottom-color: #FFD54F;
+}
+
+.navbar-nav > .active > a,
+.navbar-nav > .active > a:hover,
+.navbar-nav > .active > a:focus {
  /* color: #fff;
   border-bottom-color: #fff;*/
    color: #FFD54F;
