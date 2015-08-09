@@ -40,9 +40,41 @@
     <link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
     <script src="http://vjs.zencdn.net/4.12/video.js"></script>
 
+    <script>
+    $(window).scroll(function() {
+    if($(this).scrollTop() > 100) {
+        $('.navbar-fixed-top').addClass('opaque');
+    } else {
+        $('.navbar-fixed-top').removeClass('opaque');
+    }
+});
+    </script>
+
   </head>
 
   <body>
+
+  <nav class="navbar navbar-default navbar-fixed-top">
+                 <div class="container">
+                 <div class="navbar-header">
+                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+                <h3 class="masthead-brand"><img src ="/static/djangosnap/logo.png" width="40" height="40" />TAGALONG</h3>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                  <li id="index"><a href="{% url 'index' %}">Home</a></li>
+                  <li id="uploadit"><a href="{% url 'uploadit' %}">Upload</a></li>
+                  <li id="watch"><a href="{% url 'watch' %}">Watch</a></li>                  
+<!--li><a href="http://getbootstrap.com/examples/cover/#">Contact</a></li-->
+                </ul>
+                </div>
+</div>
+              </nav>
 
     <div class="site-wrapper">
 
@@ -50,19 +82,11 @@
 
         <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand"><img src ="/static/djangosnap/logo.png" width="40" height="40" />TAGALONG</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li id="index"><a href="{% url 'index' %}">Home</a></li>
-                  <li id="uploadit"><a href="{% url 'uploadit' %}">Upload</a></li>
-                  <li id="watch"><a href="{% url 'watch' %}">Watch</a></li>                  
-<!--li><a href="http://getbootstrap.com/examples/cover/#">Contact</a></li-->
-                </ul>
-              </nav>
-            </div>
-          </div>
+<!--           <div class="masthead clearfix">
+            <div class="inner"> -->
+              
+<!--             </div>
+          </div> -->
 
           {% block content %}
 
