@@ -44,7 +44,7 @@ body {
 }
 
 .navbar-fixed-top { background-color: rgba(255,255,255,0);transition: background-color 2s ease 0s;}
-.navbar-fixed-top.opaque { background-color: rgba(255,255,255,.2);transition: background-color 2s ease 0s; }
+.navbar-fixed-top.opaque { background-color: rgba(255,255,255,.15);transition: background-color 2s ease 0s; }
 
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -111,6 +111,9 @@ body {
   background-color: transparent;
      color: #FFD54F;
   border-bottom-color: #FFD54F;
+}
+.navbar-nav>li>a {
+  padding-bottom: 25px;
 }
 
 .navbar-default .navbar-nav>.active>a,
