@@ -7,22 +7,48 @@ from django.views.decorators.csrf import csrf_exempt
 from forms import MediaForm
 from wsgiref.util import FileWrapper
 from models import Media
+from django.contrib.auth import authenticate, login
+from tastypie.models import ApiKey
+
 
 def index(request):
     return render(request, 'djangosnap/cover.html')
 
+@csrf_exempt
 def add_user(request):
     if request.method == "POST":
-        user = request.POST['user']
+        user = request.POST['username']
         password = request.POST['password']
         email = request.POST['email']
-        if form.is_valid():
-            new_user = User.objects.create_user(username=user, password=password, email=email)
-            login(new_user)
-            return HttpResponse("need to add the get api key of this user")
+        if not len(user) > 5 and not len(password) > 6:
+            return HttpResponse("")
+        new_user = User.objects.create_user(username=user, password=password, email=email)
+        key = ApiKey.objects.get(user=new_user)
+        return HttpResponse(key.key)
     else:
         form = UserForm()
-    return HttpResponse("success")
+        return HttpResponse("")
+
+@csrf_exempt
+def login_user(request):
+    if request.method != "POST":
+        return HttpResponse("")
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        if user.is_active:
+            # login(request, user)
+            # # Redirect to a success page.
+            u = User.objects.get(username=username)
+            key = ApiKey.objects.get(user=u)
+            return HttpResponse(key.key)
+        else:
+            # Return a 'disabled account' error message
+            return HttpResponse('disabled')
+    else:
+        return HttpResponse('failed login')
+
 
 
 @csrf_exempt
