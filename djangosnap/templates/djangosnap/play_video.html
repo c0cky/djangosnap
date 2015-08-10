@@ -8,36 +8,33 @@
 }
 
 </style>
-          <div class="" id="innercover" sytle="width:100%">
-          <div class="row">
-<div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
-        </div>
-        </div>
+<div class="" id="innercover" sytle="width:100%">
+  <div class="row">
+    <div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
+    </div>
+  </div>
 
-      <div class="row">
-<div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
-        </div>
-        </div>
-
-
-
-        <div class="row">
+  <div class="row">
+      <div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
+      </div>
+  </div>
 
 
-            {% if mediafiles %}
-<div class="col-offset-md-4 col-md-8" id="content">
+
+  <div class="row">
+    {% if mediafiles %}
+      <div class="col-md-8" id="content">
         <!-- <video class="video-js vjs-default-skin"
   controls width="640" height="264"
    id="vid" style="visibility: visible" data-setup='{}'>
         </video> -->
-        
         <img src="#" class="img-responsive"style="visibility: hidden" id="im"/>
-        </div>
+      </div>
 
     {% else %}
     {% endif %}
-        </div>
-          </div>
+  </div>
+</div>
 
            
 
@@ -51,9 +48,8 @@
     {% endif %}
 </script>
 
- <script src="{% static 'djangosnap/watchScript.js' %}"></script>
- <script src="{% static 'djangosnap/bigvideo.js' %}"></script>
- <link rel="stylesheet" type="text/css" href="{% static 'djangosnap/bigvideo.css' %}">
+<script src="{% static 'djangosnap/watchScript.js' %}"></script>
+
 
 
 
