@@ -6,28 +6,36 @@
 .img-responsive {
     width:100%;
 }
+
 </style>
           <div class="" id="innercover" sytle="width:100%">
           <div class="row">
-<div class="col-md-1"><a class="btn text-left " onclick="previousMedia()" style="visibility: hidden" id="previous"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
+<div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
+        </div>
+        </div>
+
+      <div class="row">
+<div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
+        </div>
         </div>
 
 
+
+        <div class="row">
+
+
             {% if mediafiles %}
-<div class="col-md-10" id="content">
+<div class="col-offset-md-4 col-md-8" id="content">
         <!-- <video class="video-js vjs-default-skin"
   controls width="640" height="264"
    id="vid" style="visibility: visible" data-setup='{}'>
         </video> -->
         
-        <img src="#" class="img-responsive col-md-10"style="visibility: hidden" id="im"/>
+        <img src="#" class="img-responsive"style="visibility: hidden" id="im"/>
         </div>
 
     {% else %}
     {% endif %}
-          <div class="col-md-1">
-          <a class="btn text-right col-md-1" onclick="nextMedia()" style="visibility: hidden" id="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-          </div>
         </div>
           </div>
 
