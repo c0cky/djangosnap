@@ -67,14 +67,23 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 #}
 
 DATABASES = {
+
     'default': {
+
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'django',
-        'USER': 'django',
-        'PASSWORD': '8UJJVaSl7V',
+
+        'NAME': 'djangosnap',
+
+        'USER': 'djangosnapuser',
+
+        'PASSWORD': '~fixyourface0~',
+
         'HOST': 'localhost',
+
         'PORT': '',
+
     }
+
 }
 
 #'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
