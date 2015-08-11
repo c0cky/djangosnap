@@ -75,6 +75,24 @@
           </div>
         {% endfor %}
         </div>
+        <div>
+        {% if user.is_authenticated %}
+          {% get_comment_form for object as form %}
+          <form action="{% comment_form_target %}" method="POST">
+            {% csrf_token %}
+            {{ form.comment }}
+            {{ form.honeypot }}
+            {{ form.content_type }}
+            {{ form.object_pk }}
+            {{ form.timestamp }}
+            {{ form.security_hash }}
+            <input type="hidden" name="next" value="{% url 'object_detail_view' object.id %}" />
+            <input type="submit" value="Add comment" id="id_submit" />
+          </form>
+        {% else %}
+          <p>Please log in to leave a comment.</p>
+        {% endif %}
+        </div>
       </div>
     </div>
   </div>
