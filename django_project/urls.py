@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^comments/', include('django_comments.urls')),
 
     url(r'^$', views.index, name='index'),
     url(r'^test/', views.video_test, name='test'),

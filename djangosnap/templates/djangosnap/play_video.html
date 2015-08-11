@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-{% load staticfiles%}
+{% load staticfiles %}
+{% load comments %}
 {% block content %}
 <style>
 
@@ -50,14 +51,16 @@
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        {% get_comment_list for event as comment_list %}
+        {% for comment in comment_list %}
           <div class="panel-body">
             <div class="media">
               <div class="media-left media-middle">
                 <!-- <a href="#">
                   <img class="media-object" src="..." alt="...">
                 </a> -->
-                <button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
-                <button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
+                <button class="btn text-left" id="up"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
+                <button class="btn text-left" id="down"><img src="{% static 'djangosnap/ic_trending_down_black_24dp_2x.png' %}"/></button>
 
               </div>
               <div class="media-body">
@@ -68,6 +71,7 @@
               </div>
             </div>
           </div>
+        {% endfor %}
         </div>
       </div>
     </div>
