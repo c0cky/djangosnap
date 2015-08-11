@@ -67,23 +67,14 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 #}
 
 DATABASES = {
-
     'default': {
-
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-
         'NAME': 'djangosnap',
-
         'USER': 'djangosnapuser',
-
         'PASSWORD': '~fixyourface0~',
-
         'HOST': 'localhost',
-
         'PORT': '',
-
     }
-
 }
 
 #'NAME': os.path.join(BASE_DIR,'db.sqlite3'),
@@ -108,7 +99,7 @@ USE_TZ = True
 #STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = '/Users/godboutc/Desktop/Django/djangosnap/djangosnap'
+MEDIA_ROOT = '/home/djangosnap/djangosnap'
 MEDIA_URL = '/media/'
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
