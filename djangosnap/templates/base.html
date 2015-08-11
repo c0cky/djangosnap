@@ -40,6 +40,13 @@
     <link href="http://vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">
     <script src="http://vjs.zencdn.net/4.12/video.js"></script>
 
+    <script type="text/javascript"
+   src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone-min.js"></script>
+   <script
+   src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+
+
+
     <script>
     $(window).scroll(function() {
     if($(this).scrollTop() > 100) {
@@ -80,7 +87,7 @@
 
       <div class="site-wrapper-inner">
 
-        <div class="cover-container">
+        <div class="cover-container container-fluid">
 
 <!--           <div class="masthead clearfix">
             <div class="inner"> -->
@@ -92,11 +99,8 @@
 
           {% endblock %}
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p><a href="https://twitter.com/GamronCodbout">@GamronCodbout</a>    <a href="https://twitter.com/PistolPiedt">@PistolPiedt</a>.</p>
-            </div>
-          </div>
+          {% block mast_footer %}
+          {% endblock %}
 
         </div>
         
@@ -105,7 +109,8 @@
       </div>
 
     </div>
-
+    {% block sticky_footer %}
+    {% endblock %}
     
   </body>
 </html>

@@ -36,7 +36,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'djangosnap',
+    'django_comments',
     'tastypie',
 )
 
@@ -112,3 +114,5 @@ CONTENT_TYPES = ['image', 'video']
 # 250MB - 214958080
 # 500MB - 429916160
 MAX_UPLOAD_SIZE = "5242880"
+
+SITE_ID = 1

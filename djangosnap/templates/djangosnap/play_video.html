@@ -1,35 +1,120 @@
 {% extends "base.html" %}
-{% load staticfiles%}
+{% load staticfiles %}
+{% load comments %}
 {% block content %}
 <style>
 
 .img-responsive {
-    width:100%;
+    width:auto;
+    height: auto;
+    margin: 0 auto;
+
 }
+
+#id_honeypot {
+    display: none;
+}
+
+#id_comment {
+  color: #000;
+}
+
+p {
+  color: #000;
+}
+
+.cover-container{
+   margin-top: 100px; 
+}
+
+
 </style>
-          <div class="" id="innercover" sytle="width:100%">
-          <div class="row">
-<div class="col-md-1"><a class="btn text-left " onclick="previousMedia()" style="visibility: hidden" id="previous"><span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span></a>
-        </div>
+<div class="" id="innercover" sytle="width:100%">
+{% for media in mediafiles %}
+  <div class="row">
+    <div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
+      </div>
+  </div>
 
 
-            {% if mediafiles %}
-<div class="col-md-10" id="content">
+
+  <div class="row">
+    {% if mediafiles %}
+      <div class="col-md-12" id="content">
         <!-- <video class="video-js vjs-default-skin"
   controls width="640" height="264"
    id="vid" style="visibility: visible" data-setup='{}'>
         </video> -->
-        
-        <img src="#" class="img-responsive col-md-10"style="visibility: hidden" id="im"/>
-        </div>
+        <img src="{{ MEDIA_URL}}{{ media.mediafile }}" class="img-responsive" id="im"/>
+      </div>
 
     {% else %}
     {% endif %}
-          <div class="col-md-1">
-          <a class="btn text-right col-md-1" onclick="nextMedia()" style="visibility: hidden" id="next"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-          </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12" id="comments">
+      <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="headingOne">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            {% get_comment_count for media as comment_count %}
+            Comments {{ comment_count }}
+            </a>
+          </h4>
         </div>
+        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        {% get_comment_list for media as comment_list %}
+        {% for comment in comment_list %}
+          <div class="panel-body">
+            <div class="media">
+              <div class="media-left media-middle">
+                <!-- <a href="#">
+                  <img class="media-object" src="..." alt="...">
+                </a> -->
+                <button class="btn text-left" id="up"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
+                <button class="btn text-left" id="down"><img src="{% static 'djangosnap/ic_trending_down_black_24dp_2x.png' %}"/></button>
+
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Header here</h4>
+                <p>
+                    Comment text will go in here.
+                </p>
+              </div>
+            </div>
           </div>
+        {% endfor %}
+        </div>
+        <div>
+        {% if user.is_authenticated %}
+          {% get_comment_form for media as form %}
+          <form action="{% comment_form_target %}" method="POST">
+            {% csrf_token %}
+            {{ form.comment }}
+            {{ form.honeypot }}
+            {{ form.content_type }}
+            {{ form.object_pk }}
+            {{ form.timestamp }}
+            {{ form.security_hash }}
+            <div class="row">
+              <input type="submit" value="Add comment" id="id_submit" />
+            </div>
+          </form>
+        {% else %}
+          <p>Please log in to leave a comment.</p>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
 
            
 
@@ -43,13 +128,24 @@
     {% endif %}
 </script>
 
- <script src="{% static 'djangosnap/watchScript.js' %}"></script>
- <script src="{% static 'djangosnap/bigvideo.js' %}"></script>
- <link rel="stylesheet" type="text/css" href="{% static 'djangosnap/bigvideo.css' %}">
+<script src="{% static 'djangosnap/watchScript.js' %}"></script>
 
 
 
 
+
+{% endblock %}
+
+{% block sticky_footer %}
+<footer class="footer">
+<!--             <div class="inner">
+ -->             
+   <div class="container"> 
+   <p><a href="https://twitter.com/GamronCodbout">@GamronCodbout</a>    <a href="https://twitter.com/PistolPiedt">@PistolPiedt</a></p>
+   </div>
+<!--             </div>
+ -->        
+ </footer>
 {% endblock %}
 
 
