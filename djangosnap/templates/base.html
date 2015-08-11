@@ -99,11 +99,8 @@
 
           {% endblock %}
 
-          <div class="mastfoot">
-            <div class="inner">
-              <p><a href="https://twitter.com/GamronCodbout">@GamronCodbout</a>    <a href="https://twitter.com/PistolPiedt">@PistolPiedt</a></p>
-            </div>
-          </div>
+          {% block mast_footer %}
+          {% endblock %}
 
         </div>
         
@@ -112,7 +109,8 @@
       </div>
 
     </div>
-
+    {% block sticky_footer %}
+    {% endblock %}
     
   </body>
 </html>
