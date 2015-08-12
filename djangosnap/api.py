@@ -1,10 +1,14 @@
 __author__ = 'camron'
+from tastypie import fields
 from tastypie.resources import ModelResource
 from tastypie.constants import ALL
 from tastypie.authentication import BasicAuthentication, ApiKeyAuthentication, MultiAuthentication
 from tastypie.authorization import DjangoAuthorization
 from models import Media
 from django.contrib.auth.models import User
+from django_comments.models import Comment
+from django.forms.models import model_to_dict
+
 
 class MediaResource(ModelResource):
     class Meta:
@@ -14,6 +18,19 @@ class MediaResource(ModelResource):
         authentication = ApiKeyAuthentication()
         authorization = DjangoAuthorization()
 
+    def dehydrate(self, bundle):
+    	comments = Comment.objects.filter(ticket=bundle.data['id'])
+        bundle.data['comments'] = [model_to_dict(c) for c in comments]
+        return bundle
+
+
+# class CommentResource(ModelResource):
+#     media = fields.ForeignKey(MediaResource, 'media')
+#     class Meta:
+#         queryset = Comment.objects.all()
+#         filtering = {
+#             'media': ALL_WITH_RELATIONS,
+#         }
 
 class UserResource(ModelResource):
     class Meta:
