@@ -19,7 +19,7 @@ class MediaResource(ModelResource):
         authorization = DjangoAuthorization()
 
     def dehydrate(self, bundle):
-    	comments = Comment.objects.filter(ticket=bundle.data['id'])
+    	comments = Comment.objects.filter(object_pk=bundle.data['id'])
         bundle.data['comments'] = [model_to_dict(c) for c in comments]
         return bundle
 
