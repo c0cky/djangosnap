@@ -6,7 +6,7 @@ from tastypie.authentication import BasicAuthentication, ApiKeyAuthentication, M
 from tastypie.authorization import DjangoAuthorization
 from models import Media
 from django.contrib.auth.models import User
-from django_comments.models import Comment
+from tagalong_comments.models import TagalongComment
 from django.forms.models import model_to_dict
 
 
@@ -19,7 +19,7 @@ class MediaResource(ModelResource):
         authorization = DjangoAuthorization()
 
     def dehydrate(self, bundle):
-    	comments = Comment.objects.filter(object_pk=bundle.data['id'])
+    	comments = TagalongComment.objects.filter(object_pk=bundle.data['id'])
         bundle.data['comments'] = [model_to_dict(c) for c in comments]
         return bundle
 
