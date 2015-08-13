@@ -8,18 +8,27 @@
         }));
     };
 
-    var Term = Backbone.Model.extend({
-        urlRoot: '/api/term/',
+    var Media = Backbone.Model.extend({
+        urlRoot: '/api/media/',
         toTemplate: function() {
             return _(this.attributes).clone();
-        }
+        },
+        addUpvote: function() {
+            return this.get('up_vote')++;
+        },
+        addDownvote: function() {
+            return this.get('down_vote')++;
+        },
+        getTotalPoints: function() {
+            return this.get('up_vote') - this.get('down_vote');
+        } 
     });
 
-    var TermList = Backbone.Collection.extend({
-        urlRoot: '/api/term/',
-        model: Term,
+    var MediaList = Backbone.Collection.extend({
+        urlRoot: '/api/media/',
+        model: Media,
         comparator: function(obj) {
-            return obj.get("display_name");
+            return obj.get("upload_time");
         },
         toTemplate: function() {
             var a = [];
@@ -32,9 +41,9 @@
             var internalId = this.urlRoot + id + '/';
             return this.get(internalId);
         },
-        getByDisplayName: function(name) {
+        getByRegion: function(region) {
             return this.find(function(term) {
-                return term.get("display_name") === name;
+                return term.get("region") === region;
             });
         }
     });

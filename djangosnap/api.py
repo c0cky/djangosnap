@@ -11,6 +11,8 @@ from django.forms.models import model_to_dict
 
 
 class MediaResource(ModelResource):
+    comments = fields.ToManyField('djangosnap.api.resources.TagalongCommentResource', 'tagalong_comments')
+
     class Meta:
         queryset = Media.objects.all()
         resource_name = 'media'
@@ -23,7 +25,17 @@ class MediaResource(ModelResource):
         bundle.data['comments'] = [model_to_dict(c) for c in comments]
         return bundle
 
+    # def hydrate(self, bundle):
+    #     if 'comments' in bundle.data:
+    #         bundle.obj.comments = VocabularyResource().get_via_uri(
+    #             bundle.data['vocabulary'])
 
+    #     bundle.obj.display_name = bundle.data['display_name']
+    #     return bundle
+
+class TagalongCommentResource(ModelResource):
+	class Meta:
+		queryset = TagalongComment.objects.all()
 # class CommentResource(ModelResource):
 #     media = fields.ForeignKey(MediaResource, 'media')
 #     class Meta:
