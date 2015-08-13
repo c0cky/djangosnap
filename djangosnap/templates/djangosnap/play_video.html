@@ -31,17 +31,34 @@ h4 {
    margin-top: 100px; 
 }
 
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
 
 </style>
 <div class="" id="innercover" sytle="width:100%">
 {% for media in mediafiles %}
   <div class="row">
     <div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
+    <p>
+    {{ media.up_vote }}
+    </p>
     </div>
-  </div>
+<!--   </div>
+    
+  <div class="row"> -->
+    <div class="col-md-9"></div>
 
-  <div class="row">
+
+
+
       <div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
+      <p>
+      {{ media.down_vote }}
+      </p>
       </div>
   </div>
 
@@ -82,7 +99,9 @@ h4 {
                   <img class="media-object" src="..." alt="...">
                 </a> -->
                 <button class="btn text-left" id="up"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
+                <p>{{ comment.up_vote }}</p>
                 <button class="btn text-left" id="down"><img src="{% static 'djangosnap/ic_trending_down_black_24dp_2x.png' %}"/></button>
+                <p>{{ comment.down_vote }}</p>
 
               </div>
               <div class="media-body">
