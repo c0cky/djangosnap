@@ -70,7 +70,6 @@
         render: function() {
             this.context.mediafiles = this.collection.toTemplate();
             var markup = this.medialistTemplate(this.context);
-            console.log(this.el);
             jQuery(this.el).html(markup);
         }
 

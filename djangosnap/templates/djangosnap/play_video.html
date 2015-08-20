@@ -38,7 +38,7 @@ h4 {
 
 </style>
 <div class="" id="innercover" sytle="width:100%">
-
+{{mediafiles}}
 </div>
 <!--
 <div class="" id="innercover" sytle="width:100%">
@@ -154,19 +154,26 @@ h4 {
       </div>
   </div>
 
+
+  <div class="row">
+      <div class="col-md-12" id="content">
+       <img src="<%=mediafiles[i].mediafile%>" class="img-responsive" id="im<%mediafiles[i].id%>"/>
+      </div>
+  </div>
+
   <div class="row">
     <div class="col-md-12" id="comments<%=mediafiles[i].id%>">
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
           <h4 class="panel-title">
             <a role="button" data-toggle="collapse" href="#collapse<%=mediafiles[i].id%>" aria-expanded="true" aria-controls="collapseOne">
-            {% get_comment_count for <%=mediafiles[i].id%> as comment_count %}
+            {% get_comment_count for djangosnap.media i as comment_count %}
             Comments {{ comment_count }}
             </a>
           </h4>
         </div>
         <div id="collapse<%=mediafiles[i].id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-        {% get_comment_list for <%=mediafiles[i]%> as comment_list %}
+        {% get_comment_list for djangosnap.media i as comment_list %}
         {% for comment in comment_list %}
           <div class="panel-body">
             <div class="media">
@@ -187,7 +194,7 @@ h4 {
         {% endfor %}
         </div>
         <div>
-          {% render_comment_form for <%=mediafiles[i]%> %}
+          {% render_comment_form for djangosnap.media i %}
         </div>
       </div>
     </div>
