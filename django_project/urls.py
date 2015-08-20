@@ -18,7 +18,6 @@ urlpatterns = patterns('',
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^comments/', include('django_comments.urls')),
-
     url(r'^$', views.index, name='index'),
     url(r'^test/', views.video_test, name='test'),
     url(r'^uploadit/', views.upload_it, name='uploadit'),
@@ -29,4 +28,4 @@ urlpatterns = patterns('',
     url(r'^map/', views.map_pick, name='map'),
     url(r'^api', include(tagalong_api.urls)),
 
-)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

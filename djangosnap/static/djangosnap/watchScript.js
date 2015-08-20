@@ -8,6 +8,11 @@
         }));
     };
 
+    Backbone.Tastypie.apiKey = {
+        username: '{{request.user.username}}',
+        key: '{{ request.user.api_key }}'
+    };
+
     var Media = Backbone.Model.extend({
         urlRoot: '/api/media/',
         toTemplate: function() {
@@ -48,67 +53,31 @@
         }
     });
 
-    var Vocabulary = Backbone.Model.extend({
-        urlRoot: '/api/vocabulary/',
-        parse: function(response) {
-            if (response) {
-                response.term_set = new TermList(response.term_set);
-            }
+    window.MediaListView = Backbone.View.extend({
+        // events: {
+        //     'click a.up-vote' : 'up-vote',
+        //     'click a.down-vote' : 'down-vote'
+        // },
+        initialize: function(options) {
+            // _.bindAll(this, "up-vote", "down-vote");
 
-            return response;
-        },
-        toTemplate: function() {
-            var json = _(this.attributes).clone();
-            json.term_set = this.get('term_set').toTemplate();
-            return json;
-        },
-        getOnomyUrls: function() {
-            // the onomy url field was conceived as a comma-delimited list
-            // of urls. reconstitute as an array here for easier searching
-            // and adding new urls
-            var urls = [];
-            var str = this.get('onomy_url');
-            if (str.length > 0) {
-                urls = str.split(',');
-            }
-            return urls;
-        },
-        hasTerm: function(termName) {
-            return this.get('term_set').getByDisplayName(termName);
-        },
-        addTerm: function(termName, uri) {
-            if (!this.hasTerm(termName)) {
-                var term = new Term({display_name: termName, skos_uri: uri});
-                this.get('term_set').add(term);
-            }
-        }
-    });
+            this.context = options;
+            this.medialistTemplate =
+                _.template(jQuery("#watch-template").html());
 
-    var VocabularyList = Backbone.Collection.extend({
-        urlRoot: '/api/vocabulary/',
-        model: Vocabulary,
-        comparator: function(obj) {
-            return obj.get("display_name");
+            this.collection = new MediaList();
+            this.collection.on("add", this.render);
+            this.collection.on("remove", this.render);
+            this.collection.on("reset", this.render);
+            this.collection.on("sync", this.render);
+            this.collection.fetch(); 
         },
-        parse: function(response) {
-            return response.objects || response;
-        },
-        toTemplate: function() {
-            var a = [];
-            this.forEach(function(item) {
-                a.push(item.toTemplate());
-            });
-            return a;
-        },
-        getByDataId: function(id) {
-            var internalId = this.urlRoot + id + '/';
-            return this.get(internalId);
-        },
-        getByDisplayName: function(displayName) {
-            return this.find(function(vocab) {
-                return vocab.get("display_name") === displayName;
-            });
+        render: function() {
+            this.context.MediaList = this.collection.toTemplate();
+            var markup = this.medialistTemplate(this.context);
+            jQuery(this.el).html(markup);
         }
+
     });
 
 

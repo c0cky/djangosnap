@@ -8,6 +8,7 @@
     width:auto;
     height: auto;
     margin: 0 auto;
+
 }
 
 #id_honeypot {
@@ -36,8 +37,8 @@ h4 {
     float: none;
 }
 
+
 </style>
-<!--
 <div class="" id="innercover" sytle="width:100%">
 {% for media in mediafiles %}
   <div class="row">
@@ -49,7 +50,7 @@ h4 {
 <!--   </div>
     
   <div class="row"> -->
-<!--     <div class="col-md-9"></div>
+    <div class="col-md-9"></div>
 
 
 
@@ -70,7 +71,7 @@ h4 {
   controls width="640" height="264"
    id="vid" style="visibility: visible" data-setup='{}'>
         </video> -->
-       <!--  <img src="{{ MEDIA_URL}}{{ media.mediafile }}" class="img-responsive" id="im"/>
+        <img src="{{ MEDIA_URL}}{{ media.mediafile }}" class="img-responsive" id="im"/>
       </div>
 
     {% else %}
@@ -97,7 +98,7 @@ h4 {
                 <!-- <a href="#">
                   <img class="media-object" src="..." alt="...">
                 </a> -->
-               <!--  <button class="btn text-left" id="up"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
+                <button class="btn text-left" id="up"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
                 <p>{{ comment.up_vote }}</p>
                 <button class="btn text-left" id="down"><img src="{% static 'djangosnap/ic_trending_down_black_24dp_2x.png' %}"/></button>
                 <p>{{ comment.down_vote }}</p>
@@ -120,7 +121,8 @@ h4 {
   </div>
 {% endfor %}
 </div>
-    -->
+
+           
 <!--
 <script type="application/javascript">
 
@@ -134,102 +136,8 @@ h4 {
 
 <script src="{% static 'djangosnap/watchScript.js' %}"></script>
 -->
-{% verbatim %}
-<script type="text/template" id="watch-template">
-
-<div class="" id="innercover" sytle="width:100%">
-  <% for (var i=0; i < mediafiles.length; i++) { %>
-    <div class="row">
-      <div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
-      <p>
-        <%=mediafiles[i].up_vote%>
-      </p>
-      </div>
-      <div class="col-md-9"></div>
-      <div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
-      <p>
-        <%=mediafiles[i].down_vote%>
-      </p>
-      </div>
-  </div>
-
-  <div class="row">
-    <div class="col-md-12" id="comments<%=mediafiles[i].id%>">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" href="#collapse<%=mediafiles[i].id%>" aria-expanded="true" aria-controls="collapseOne">
-            {% get_comment_count for <%=mediafiles[i].id%> as comment_count %}
-            Comments {{ comment_count }}
-            </a>
-          </h4>
-        </div>
-        <div id="collapse<%=mediafiles[i].id%>" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-        {% get_comment_list for <%=mediafiles[i]%> as comment_list %}
-        {% for comment in comment_list %}
-          <div class="panel-body">
-            <div class="media">
-              <div class="media-left media-middle">
-                <button class="btn text-left" id="up<%=mediafiles[i].id%>{{comment.id}}"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
-                <p>{{ comment.up_vote }}</p>
-                <button class="btn text-left" id="down<%=mediafiles[i].id%>{{coment.id}}"><img src="{% static 'djangosnap/ic_trending_down_black_24dp_2x.png' %}"/></button>
-                <p>{{ comment.down_vote }}</p>
-
-              </div>
-              <div class="media-body">
-                <p>
-                    {{comment.comment}}
-                </p>
-              </div>
-            </div>
-          </div>
-        {% endfor %}
-        </div>
-        <div>
-          {% render_comment_form for <%=mediafiles[i]%> %}
-        </div>
-      </div>
-    </div>
-  </div>
-  <% } %>
-
-
-</div>
-
-</script>
-
-{% endverbatim %}
 
 <script src="{% static 'djangosnap/backbone-tastypie.js' %}"></script>
-<script src="{% static 'djangosnap/watchScript.js' %}"></script>
-<script type="text/javascript">
-  jQuery(document).ready(function () {
-    var view = new MediaListView({
-      el: jQuery("#mediafiles"),
-    });
-  });
-
-// (function ($) {
-//     var _ajax = $.ajax;
-//     $.extend(
-//     {
-//         ajax: function (options)
-//         {
-//             var data = options.data || {}; 
-//             data = _.defaults(data, {
-//                 username: window.app.settings.credentials.username,
-//                 api_key: window.app.settings.credentials.api_key
-//             });
-//             options.data = data;
-//             return _ajax.call(this, options);
-//         }
-//     });
-// })(jQuery);
-Backbone.Tastypie.apiKey = {
-        username: '{{user}}',
-        key: '{{api_key}}'
-    };
-</script>
 
 {% endblock %}
 
@@ -239,7 +147,6 @@ Backbone.Tastypie.apiKey = {
  -->             
    <div class="container"> 
    <p><a href="https://twitter.com/GamronCodbout">@GamronCodbout</a>    <a href="https://twitter.com/PistolPiedt">@PistolPiedt</a></p>
-
    </div>
 <!--             </div>
  -->        

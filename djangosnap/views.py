@@ -88,11 +88,12 @@ def upload_file(request):
         form = MediaForm()
     return HttpResponse()
 
+
 def watch_videos(request):
     #mediafiles = list(Media.objects.filter(approved=True).values('mediafile'))
     mediafiles = Media.objects.filter(approved=True)
     print type(mediafiles)
-    return render(request, 'djangosnap/play_video.html', {'mediafiles': mediafiles})
+    return render(request, 'djangosnap/play_video.html', {'mediafiles': mediafiles, 'user': request.user.username, 'api_key': request.user.api_key.key})
 
 def map_pick(request):
     return render(request, 'djangosnap/mapPick.html')
