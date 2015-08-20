@@ -37,6 +37,9 @@ h4 {
 }
 
 </style>
+<div class="" id="innercover" sytle="width:100%">
+
+</div>
 <!--
 <div class="" id="innercover" sytle="width:100%">
 {% for media in mediafiles %}
@@ -134,10 +137,8 @@ h4 {
 
 <script src="{% static 'djangosnap/watchScript.js' %}"></script>
 -->
-{% verbatim %}
 <script type="text/template" id="watch-template">
 
-<div class="" id="innercover" sytle="width:100%">
   <% for (var i=0; i < mediafiles.length; i++) { %>
     <div class="row">
       <div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
@@ -193,19 +194,15 @@ h4 {
   </div>
   <% } %>
 
-
-</div>
-
 </script>
 
-{% endverbatim %}
 
 <script src="{% static 'djangosnap/backbone-tastypie.js' %}"></script>
 <script src="{% static 'djangosnap/watchScript.js' %}"></script>
 <script type="text/javascript">
   jQuery(document).ready(function () {
     var view = new MediaListView({
-      el: jQuery("#mediafiles"),
+      el: jQuery("#innercover"),
     });
   });
 

@@ -8,11 +8,6 @@
         }));
     };
 
-    Backbone.Tastypie.apiKey = {
-        username: '{{request.user.username}}',
-        key: '{{ request.user.api_key }}'
-    };
-
     var Media = Backbone.Model.extend({
         urlRoot: '/api/media/',
         toTemplate: function() {
@@ -60,7 +55,7 @@
         // },
         initialize: function(options) {
             // _.bindAll(this, "up-vote", "down-vote");
-
+            _.bindAll(this, "render");
             this.context = options;
             this.medialistTemplate =
                 _.template(jQuery("#watch-template").html());
@@ -70,11 +65,12 @@
             this.collection.on("remove", this.render);
             this.collection.on("reset", this.render);
             this.collection.on("sync", this.render);
-            this.collection.fetch(); 
+            this.collection.fetch();
         },
         render: function() {
-            this.context.MediaList = this.collection.toTemplate();
+            this.context.mediafiles = this.collection.toTemplate();
             var markup = this.medialistTemplate(this.context);
+            console.log(this.el);
             jQuery(this.el).html(markup);
         }
 

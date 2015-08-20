@@ -11,7 +11,7 @@ from django.forms.models import model_to_dict
 
 
 class MediaResource(ModelResource):
-    comments = fields.ToManyField('djangosnap.api.resources.TagalongCommentResource', 'tagalong_comments')
+    comments = fields.ToManyField('djangosnap.api.resources.TagalongCommentResource', 'tagalong_comments', null=True, blank=True, full=True)
 
     class Meta:
         queryset = Media.objects.all()
