@@ -213,22 +213,6 @@ h4 {
     });
   });
 
-// (function ($) {
-//     var _ajax = $.ajax;
-//     $.extend(
-//     {
-//         ajax: function (options)
-//         {
-//             var data = options.data || {}; 
-//             data = _.defaults(data, {
-//                 username: window.app.settings.credentials.username,
-//                 api_key: window.app.settings.credentials.api_key
-//             });
-//             options.data = data;
-//             return _ajax.call(this, options);
-//         }
-//     });
-// })(jQuery);
 Backbone.Tastypie.apiKey = {
         username: '{{user}}',
         key: '{{api_key}}'
