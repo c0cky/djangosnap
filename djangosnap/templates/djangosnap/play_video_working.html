@@ -23,8 +23,18 @@ p {
   color: #000;
 }
 
+h4 {
+  color: #000;
+}
+
 .cover-container{
    margin-top: 100px; 
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
 }
 
 
@@ -33,11 +43,22 @@ p {
 {% for media in mediafiles %}
   <div class="row">
     <div class="col-md-1"><button class="btn text-left" id="up"><img src="{% static 'djangosnap//ic_trending_up_black_24dp_2x.png' %}"/></button>
+    <p>
+    {{ media.up_vote }}
+    </p>
     </div>
-  </div>
+<!--   </div>
+    
+  <div class="row"> -->
+    <div class="col-md-9"></div>
 
-  <div class="row">
+
+
+
       <div class="col-md-1"><button class="btn text-left" id="down"><img src="{% static 'djangosnap//ic_trending_down_black_24dp_2x.png' %}"/></button>
+      <p>
+      {{ media.down_vote }}
+      </p>
       </div>
   </div>
 
@@ -78,13 +99,14 @@ p {
                   <img class="media-object" src="..." alt="...">
                 </a> -->
                 <button class="btn text-left" id="up"><img src="{% static 'djangosnap/ic_trending_up_black_24dp_2x.png' %}"/></button>
+                <p>{{ comment.up_vote }}</p>
                 <button class="btn text-left" id="down"><img src="{% static 'djangosnap/ic_trending_down_black_24dp_2x.png' %}"/></button>
+                <p>{{ comment.down_vote }}</p>
 
               </div>
               <div class="media-body">
-                <h4 class="media-heading">Header here</h4>
                 <p>
-                    Comment text will go in here.
+                    {{comment.comment}}
                 </p>
               </div>
             </div>
@@ -92,23 +114,7 @@ p {
         {% endfor %}
         </div>
         <div>
-        {% if user.is_authenticated %}
-          {% get_comment_form for media as form %}
-          <form action="{% comment_form_target %}" method="POST">
-            {% csrf_token %}
-            {{ form.comment }}
-            {{ form.honeypot }}
-            {{ form.content_type }}
-            {{ form.object_pk }}
-            {{ form.timestamp }}
-            {{ form.security_hash }}
-            <div class="row">
-              <input type="submit" value="Add comment" id="id_submit" />
-            </div>
-          </form>
-        {% else %}
-          <p>Please log in to leave a comment.</p>
-        {% endif %}
+          {% render_comment_form for media %}
         </div>
       </div>
     </div>
@@ -117,7 +123,7 @@ p {
 </div>
 
            
-
+<!--
 <script type="application/javascript">
 
     var mediaURLS = [];
@@ -129,10 +135,9 @@ p {
 </script>
 
 <script src="{% static 'djangosnap/watchScript.js' %}"></script>
+-->
 
-
-
-
+<script src="{% static 'djangosnap/backbone-tastypie.js' %}"></script>
 
 {% endblock %}
 

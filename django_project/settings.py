@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'djangosnap',
     'django_comments',
     'tastypie',
+    'tagalong_comments',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -116,3 +117,5 @@ CONTENT_TYPES = ['image', 'video']
 MAX_UPLOAD_SIZE = "5242880"
 
 SITE_ID = 1
+
+COMMENTS_APP = 'tagalong_comments'
